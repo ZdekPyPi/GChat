@@ -15,7 +15,7 @@ setup(
   long_description=open('README.md',encoding='utf-8').read() + '\n\n' + open('CHANGELOG.txt').read(),
   long_description_content_type='text/markdown',
   url='',  
-  author='Porto Seguro - Coord TI Juridico Ressarcimento e Sindicancia',
+  author='Zdek',
   author_email='',
   license='MIT', 
   classifiers=classifiers,
