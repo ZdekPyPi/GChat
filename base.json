@@ -1,0 +1,139 @@
+{
+  "header": {
+          "title": "Subsídios Auto Azul",
+          "subtitle": "Relatório de Execução RPA",
+           "imageUrl": "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png"
+        },
+  "sections": [
+    {
+      "header": "Resumo da Operação",
+      "widgets": [
+        
+        {
+          "columns": {
+            "columnItems": [
+              {
+                "widgets": [
+                  {
+                    "decoratedText": {
+                      "topLabel": "Período",
+                      "text": "📅 13/01/2026",
+                      "bottomLabel": "Início: 17:48:46 | Fim: 22:22:17"
+                      
+                    }
+                  }
+                ]
+              },
+              {
+                "widgets": [
+                  {
+                    "decoratedText": {
+                      "topLabel": "Duração",
+                      "text": "⏱️ 4:33:31"
+                    }
+                  }
+                ]
+              },
+              {
+                "widgets": [
+                  {
+                    "decoratedText": {
+                      "topLabel": "Sucesso",
+                      "text": "🎯 28 / 29 Sinistros"
+                    }
+                  }
+                ]
+              },
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "header": "Legenda",
+      "widgets": [
+         {
+           "decoratedText": {
+             "text": "✈️Azul ➕Soma 🛡️Susep ⬆️Upload ⚖️Elaw"
+           }
+         }
+      ]
+    },
+    {
+      "header": "Status por Etapa",
+      "widgets": [
+        {
+          "columns": {
+            "columnItems": [
+              {
+                "widgets": [
+                  {
+                    "decoratedText": {
+                      "text": "<b>📁 Processo</b>"
+                    }
+                  },
+                  {
+                    "decoratedText": {
+                      "text": "📑 Etapa 1asdasdas asd as das asd asd"
+                    }
+                  },
+                  {
+                    "decoratedText": {
+                      "text": "📑 Etapa 2"
+                    }
+                  }
+                ]
+              },
+              {
+                "horizontalAlignment": "END",
+                "widgets": [
+                  {
+                    "decoratedText": {
+                      "text": "<b>✈️ ➕ 🛡️ ⬆️ ⚖️</b>"
+                    }
+                  },
+                  {
+                    "decoratedText": {
+                      "text": "🟩 🟩 🟩 🟦 🟦"
+                    }
+                  },
+                  {
+                    "decoratedText": {
+                      "text": "🟨 🟨 🟦 🟥 🟥"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+     {
+            "widgets": [
+              {
+                "decoratedText": {
+                  "startIcon": {
+                    "iconUrl": "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u2705.png"
+                  },
+                  "text": "<b>A tarefa foi concluída com sucesso.</b>",
+                  "bottomLabel": "Todos os processos foram validados."
+                }
+              }
+             
+            ]
+          },
+    {
+      "widgets": [
+        {
+          "decoratedText": {
+            "text": "<b>A tarefa foi concluída com sucesso.</b>",
+            "bottomLabel": "Todos os processos foram \nvalidados.\nhttps://portoseguro.atlassian.net/jira/software/c/projects/SJ/boards/4512"
+          }
+        }
+
+      ]
+    }
+    
+  ]
+}
