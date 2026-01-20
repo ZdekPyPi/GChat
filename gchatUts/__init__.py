@@ -30,11 +30,12 @@ class GChat:
         self.webhook = webhook
         self.headers = {"Content-Type": "application/json; charset=UTF-8"}
     
-    def titled_card(self,title, icon, sections = []):
+    def titled_card(self,title,subtitle, icon, sections = []):
         default_data = json.load(open(os.path.join(os.path.dirname(__file__), 'default.json'),'r',encoding="utf-8"))
 
         default_data["cardsV2"][0]["card"]["header"]["title"] = title
         default_data["cardsV2"][0]["card"]["header"]["imageUrl"] = icon
+        default_data["cardsV2"][0]["card"]["header"]["subtitle"] = subtitle
 
         for section in sections:
             if isinstance(section,SectionEtapa):

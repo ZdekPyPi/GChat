@@ -3,7 +3,7 @@
 import sys
 import os
 sys.path.append("./gchat")
-from gchat import GChat
+from gchatUts import GChat
 
 # load_dotenv()
 
@@ -13,8 +13,8 @@ g = GChat(webhook=whook)
 
 
 #EXEMPLO TE CODIGO PARA GERAR ETAPAS
-from gchat.sections import *
-from gchat.uikit import UiButton
+from gchatUts.sections import *
+from gchatUts.uikit import UiButton
 
 
 #CRIA O RESUMO

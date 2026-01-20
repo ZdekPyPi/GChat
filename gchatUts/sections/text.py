@@ -1,5 +1,5 @@
 import json,os
-from gchat.uikit import Uikit, UiButton
+from gchatUts.uikit import Uikit, UiButton
 
 
 
@@ -15,7 +15,7 @@ class SectionText:
 
     def section(self):
         widgets = []
-        text = self.text.replace("\n",'<br>')
+        text = self.text.replace("\n",'<br>') if self.text else None
         widgets.append(Uikit.decoratedText(
             text         = self.title,
             bottom_label = text,

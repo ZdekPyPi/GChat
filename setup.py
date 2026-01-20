@@ -9,10 +9,10 @@ classifiers = [
 ]
  
 setup(
-  name='gchat',
-  version='1.0.0',
+  name='gchatUts',
+  version='1.0.2',
   description='Lib para comunicação via Google Chat Web Hook',
-  long_description=open('README.md',encoding='utf-8').read() + '\n\n' + open('CHANGELOG.txt').read(),
+  long_description=open('README.md',encoding='utf-8').read(),
   long_description_content_type='text/markdown',
   url='',  
   author='Zdek',
@@ -21,6 +21,7 @@ setup(
   classifiers=classifiers,
   keywords='gChat', 
   packages=find_packages(),
+  package_data = {'': ['*.json']},
   install_requires=[
      'requests>=2.7.0'
   ]
