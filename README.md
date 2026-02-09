@@ -1,4 +1,4 @@
-# GChat
+# gchatUts
 
 Biblioteca python para envio de mensagens formatadas via webHook do google chat
 
@@ -7,13 +7,13 @@ Biblioteca python para envio de mensagens formatadas via webHook do google chat
 ### Importando a Biblioteca
 
 ```python
-from gChat import GChat
+from gchatUts import GChat
 ```
 
 ### Criando uma Instância
 
 ```python
-from gchat import GChat,UiCard
+from gchatUts import GChat,UiCard
 
 g = GChat(webhook="SEU_WEB_HOOK")
 
@@ -32,8 +32,8 @@ g.send_card(card)
 ### Envios Simples
 
 ```python
-from gchat import GChat,UiCard
-from gchat.sections import SectionSuccess,SectionWarn,SectionError
+from gchatUts import GChat,UiCard
+from gchatUts.sections import SectionSuccess,SectionWarn,SectionError
 
 g = GChat(webhook="SEU_WEB_HOOK")
 
@@ -73,9 +73,9 @@ card.send()
 ## Criando Resumo RPA
 ``` python
 
-from gchat.sections import *
-from gchat.uikit import UiButton
-from gchat import UiCard
+from gchatUts.sections import *
+from gchatUts.uikit import UiButton
+from gchatUts import UiCard
 
 
 #CRIA O RESUMO
@@ -103,8 +103,8 @@ g.send_card(resume_card)
 
 ## Exemplos de Texto
 ```python
-from gchat import GChat,UiCard
-from gchat.sections import SectionText
+from gchatUts import GChat,UiCard
+from gchatUts.sections import SectionText
 
 textSection = SectionText(
     title = "Texto Simples", #OPCIONAL
@@ -152,8 +152,8 @@ g.send_card(text_card)
 
 ## Exemplo de ETAPA
 ```python
-from gchat import GChat,UiCard
-from gchat.sections import SectionEtapa
+from gchatUts import GChat,UiCard
+from gchatUts.sections import SectionEtapa
 
 #CRIA O OBJETO DAS ETAPAS COM A COLUNA DE CADA ETAPA E ATRIBUI UM ID PARA CADA
 sectionEtapa = SectionEtapa(
@@ -195,8 +195,8 @@ g.send_card(etapa_card)
 ## Exemplo de card customizado
 
 ```python
-from gchat.sections import UiSection
-from gchat.uikit import UiColumns,UiDecoratedText
+from gchatUts.sections import UiSection
+from gchatUts.uikit import UiColumns,UiDecoratedText
 
 
 custom_sec = UiSection(

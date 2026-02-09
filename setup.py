@@ -9,11 +9,11 @@ classifiers = [
 ]
 
 setup(
-    name="gchat",
+    name="gchatUts",
     version="1.0.5",
     description="Lib para comunicação via Google Chat Web Hook",
-    # long_description=open('README.md').read() + '\n\n' + open('CHANGELOG.txt').read(),
-    # long_description_content_type='text/markdown',
+    long_description=open('README.md',encoding='utf-8').read(),
+    long_description_content_type='text/markdown',
     url="",
     author="Porto Seguro - Coord TI Juridico Ressarcimento e Sindicancia",
     author_email="",

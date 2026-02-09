@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 import sys
 import os
 
-sys.path.append("./gchat")
-from gchat import GChat
+sys.path.append("./gchatUts")
+from gchatUts import GChat
 
 load_dotenv()
 
@@ -13,9 +13,9 @@ g = GChat(webhook=whook)
 
 
 # EXEMPLO TE CODIGO PARA GERAR ETAPAS
-from gchat.sections import SectionEtapa, Etapa, ItemEtapa
-from gchat.uikit import UiSection, UiDecoratedText, UiColumn, UiColumns, UiButton, UiCard
-from gchat.sections import SectionResumo, SectionSuccess, SectionError, SectionWarn, SectionText
+from gchatUts.sections import SectionEtapa, Etapa, ItemEtapa
+from gchatUts.uikit import UiSection, UiDecoratedText, UiColumn, UiColumns, UiButton, UiCard
+from gchatUts.sections import SectionResumo, SectionSuccess, SectionError, SectionWarn, SectionText
 
 # CRIA O RESUMO
 sectionResumo = SectionResumo(
