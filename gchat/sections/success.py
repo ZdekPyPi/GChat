@@ -1,5 +1,5 @@
 import json,os
-from gchatUts.uikit import Uikit
+from gchat.uikit import UiSection,UiDecoratedText
 
 
 
@@ -10,14 +10,14 @@ class SectionSuccess:
         self.text  = text
     
 
-    def section(self):
+    def render(self):
         text = self.text.replace("\n",'<br>') if self.text else None
-        dec_text = Uikit.decoratedText(
+        dec_text = UiDecoratedText(
             text         = f"<b>{self.title}</b>" if self.title else None,
             bottom_label = text,
             icon_url     = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u2705.png"
             )
-        base = Uikit.section(widgets=[dec_text])
+        base = UiSection(widgets=[dec_text]).render()
 
         return base
 

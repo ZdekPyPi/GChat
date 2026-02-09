@@ -11,3 +11,7 @@ pypirc
 *.env
 env
 *env
+dist/
+.vscode
+.mypy_cache/
+*.egg-info/

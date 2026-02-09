@@ -13,18 +13,18 @@ from gChat import GChat
 ### Criando uma Instância
 
 ```python
-from gchat import GChat
+from gchat import GChat,UiCard
 
 g = GChat(webhook="SEU_WEB_HOOK")
 
 #CRIA O CARD COM O TITULO E O ICONE APENAS
-base_message = g.titled_card(
-            title = "NOME DO ROBO",
-            icon  = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
+card = UiCard(
+            title      = "Titulo do Processo",
+            image_url  = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
         )
 
 #ENVIA A MENSAGEM SO COM O TITULO
-base_message.send()
+g.send_card(card)
 ```
 ![Base Card](readme_images/base_card.png)
 
@@ -32,7 +32,7 @@ base_message.send()
 ### Envios Simples
 
 ```python
-from gchat import GChat
+from gchat import GChat,UiCard
 from gchat.sections import SectionSuccess,SectionWarn,SectionError
 
 g = GChat(webhook="SEU_WEB_HOOK")
@@ -59,9 +59,9 @@ warnSection = SectionWarn(
     text  = "Atençao...."
 )
 #CRIA O CARD COM O TITULO E O ICONE APENAS
-card = g.titled_card(
-            title     = "NOME DO ROBO",
-            icon      = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
+card = UiCard(
+            title     = "Titulo do Processo",
+            image_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
             sections  = [successSection,errorSection,warnSection] #ADCIONA AS SECOES ABAIXO DO TITULO
         )
 
@@ -75,6 +75,7 @@ card.send()
 
 from gchat.sections import *
 from gchat.uikit import UiButton
+from gchat import UiCard
 
 
 #CRIA O RESUMO
@@ -84,15 +85,17 @@ sectionResumo = SectionResumo(
             hora_end   = "19:20:45",     #HORA DE TERMINO
             duracao    = "00:37:57",     #TEMPO DE EXECUCAO
             target     = f"5 / 10",      #QUANTOS ITENS CONCLUIDOS
+            maquina    = True
 )
 
-resume_card = g.titled_card(
-            title     = "NOME DO ROBO",
-            icon      = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
-            sections=[sectionResumo]
+resume_card = UiCard(
+            title     = "Titulo do Processo",
+            subtitle  = "subtitulo aqui", 
+            image_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
+            sections  = [sectionResumo]
         )
 
-resume_card.send()
+g.send_card(resume_card)
 
 ```
 
@@ -100,7 +103,7 @@ resume_card.send()
 
 ## Exemplos de Texto
 ```python
-from gchat import GChat
+from gchat import GChat,UiCard
 from gchat.sections import SectionText
 
 textSection = SectionText(
@@ -111,22 +114,22 @@ textSection2 = SectionText(
     text  = "Texto sem titulo"
 )
 textSection3 = SectionText(
-    title = "Texto Simples", #OPCIONAL
-    text  = "Texto de exemplo com Icone",
-    icon  = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png"
+    title    = "Texto Simples",              #OPCIONAL
+    text     = "Texto de exemplo com Icone",
+    icon_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png"
 )
 
 textSection4 = SectionText(
-    title = "Texto Simples", #OPCIONAL
-    text  = "Texto de exemplo com Botoes a direita",
-    icon  = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png",
+    title    = "Texto Simples",                                                                          #OPCIONAL
+    text     = "Texto de exemplo com Botoes a direita",
+    icon_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png",
     right_button = UiButton(text="Google",url="https://www.google.com")
 )
 
 textSection5 = SectionText(
-    title = "Texto Simples", #OPCIONAL
-    text  = "Texto de exemplo com Botoes a baixo",
-    icon  = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png",
+    title    = "Texto Simples",                                                                          #OPCIONAL
+    text     = "Texto de exemplo com Botoes a baixo",
+    icon_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png",
     bottom_buttons= [
         UiButton(text="Google",url="https://www.google.com"),
         UiButton(text="Youtube",url="https://www.youtube.com"),
@@ -134,13 +137,14 @@ textSection5 = SectionText(
 )
 
 #CRIA O CARD COM O TITULO E O ICONE APENAS
-text_card = g.titled_card(
-            title     = "NOME DO ROBO",
-            icon      = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
+text_card = UiCard(
+            title     = "Titulo do Processo",
+            subtitle  = "subtitulo aqui", 
+            image_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
             sections=[textSection,textSection2,textSection3,textSection4,textSection5]
         )
 
-text_card.send()
+g.send_card(text_card)
 
 ```
 ![Logo do Robô](readme_images/text_samples.png)
@@ -148,17 +152,17 @@ text_card.send()
 
 ## Exemplo de ETAPA
 ```python
-from gchat import GChat
+from gchat import GChat,UiCard
 from gchat.sections import SectionEtapa
 
 #CRIA O OBJETO DAS ETAPAS COM A COLUNA DE CADA ETAPA E ATRIBUI UM ID PARA CADA
 sectionEtapa = SectionEtapa(
             [
-                Etapa(titulo="Azul",icone="✈️",id_etapa="azul"),
-                Etapa(titulo="Soma",icone="➕",id_etapa="soma"),
-                Etapa(titulo="Susep",icone="🛡️",id_etapa="susep"),
-                Etapa(titulo="Upload",icone="⬆️",id_etapa="upload"),
-                Etapa(titulo="Elaw",icone="⚖️",id_etapa="elaw")
+                Etapa(titulo="step1",icone="✈️",id_etapa="1"),
+                Etapa(titulo="step2",icone="➕",id_etapa="2"),
+                Etapa(titulo="step3",icone="🛡️",id_etapa="3"),
+                Etapa(titulo="step4",icone="⬆️",id_etapa="4"),
+                Etapa(titulo="step5",icone="⚖️",id_etapa="5")
             ]
         )
 
@@ -166,23 +170,72 @@ sectionEtapa = SectionEtapa(
 sectionEtapa.add_job(
                 descricao = "NOME DO PROCESSO",
                 etapas = [
-                    ItemEtapa(id_etapa='azul',   status=ItemEtapa.STS_SUCC ), 
-                    ItemEtapa(id_etapa='soma',   status=ItemEtapa.STS_WARN),
-                    ItemEtapa(id_etapa='susep',  status=ItemEtapa.STS_DANG),
-                    ItemEtapa(id_etapa='upload', status=ItemEtapa.STS_BLUE),
-                    ItemEtapa(id_etapa='elaw',   status=ItemEtapa.STS_BLCK) 
+                    ItemEtapa(id_etapa='1',   status=ItemEtapa.STS_SUCC ), 
+                    ItemEtapa(id_etapa='2',   status=ItemEtapa.STS_WARN),
+                    ItemEtapa(id_etapa='3',  status=ItemEtapa.STS_DANG),
+                    ItemEtapa(id_etapa='4', status=ItemEtapa.STS_BLUE),
+                    ItemEtapa(id_etapa='5',   status=ItemEtapa.STS_BLCK) 
                     ]
                 )
 
 #CRIA O CARD COM O TITULO E O ICONE APENAS
-etapa_card = g.titled_card(
-            title     = "NOME DO ROBO",
-            icon      = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
+etapa_card = UiCard(
+            title     = "Titulo do Processo",
+            subtitle  = "subtitulo aqui", 
+            image_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
             sections=[sectionEtapa]
         )
 
-etapa_card.send()
+g.send_card(etapa_card)
 
 ```
 
 ![Logo do Robô](readme_images/etapa_sample.png)
+
+## Exemplo de card customizado
+
+```python
+from gchat.sections import UiSection
+from gchat.uikit import UiColumns,UiDecoratedText
+
+
+custom_sec = UiSection(
+    widgets=[
+        UiColumns(columns=[
+            UiColumn(widgets=[
+                UiDecoratedText(
+                    top_label= "<b>HOSTNAME</b>",
+                    text="SRV-PROD-01"
+                ),
+                UiDecoratedText(
+                    top_label= "<b>USUÁRIO</b>",
+                    text="admin_bot"
+                )
+            ]),
+            UiColumn(widgets=[
+                UiDecoratedText(
+                    top_label= "<b>ROBÔ</b>",
+                    text="Worker_Alpha"
+                ),
+                UiDecoratedText(
+                    top_label= "<b>STATUS</b>",
+                    text="<b><font color=\"#2ecc71\">● DEPLOY</font></b>"
+                )
+            ])
+        ])
+    ]
+)
+
+#CRIA O CARD COM O TITULO E O ICONE APENAS
+custom_card = UiCard(
+            title     = "Titulo do Processo",
+            subtitle  = "subtitulo aqui", 
+            image_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
+            sections=[custom_sec]
+        )
+
+g.send_card(custom_card)
+
+
+
+```

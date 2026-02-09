@@ -1,20 +1,20 @@
 #TEST FILE
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 import sys
 import os
 sys.path.append("./gchat")
-from gchatUts import GChat
+from gchat import GChat
 
-# load_dotenv()
+load_dotenv()
 
-whook = "https://chat.googleapis.com/v1/spaces/AAQApQsgnfs/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=exBswe1NQH_21bdaIYxAFbP59u2tu-Cp-WwvNOa2PJw"
+whook = os.getenv("WEBHOOK_URL")
 g = GChat(webhook=whook)
 
 
 
 #EXEMPLO TE CODIGO PARA GERAR ETAPAS
-from gchatUts.sections import *
-from gchatUts.uikit import UiButton
+from gchat.sections import *
+from gchat.uikit import *
 
 
 #CRIA O RESUMO
@@ -24,6 +24,7 @@ sectionResumo = SectionResumo(
             hora_end   = "19:20:45",     #HORA DE TERMINO
             duracao    = "00:37:57",     #TEMPO DE EXECUCAO
             target     = f"5 / 10",      #QUANTOS ITENS CONCLUIDOS
+            maquina    = True
 )
 
 successSection = SectionSuccess(
@@ -52,22 +53,22 @@ textSection2 = SectionText(
     text  = "Texto sem titulo"
 )
 textSection3 = SectionText(
-    title = "Texto Simples", #OPCIONAL
-    text  = "Texto de exemplo com Icone",
-    icon  = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png"
+    title    = "Texto Simples",                                                                          #OPCIONAL
+    text     = "Texto de exemplo com Icone",
+    icon_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png"
 )
 
 textSection4 = SectionText(
-    title = "Texto Simples", #OPCIONAL
-    text  = "Texto de exemplo com Botoes a direita",
-    icon  = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png",
+    title        = "Texto Simples",                                                                            #OPCIONAL
+    text         = "Texto de exemplo com Botoes a direita",
+    icon_url     = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png",
     right_button = UiButton(text="Google",url="https://www.google.com")
 )
 
 textSection5 = SectionText(
-    title = "Texto Simples", #OPCIONAL
-    text  = "Texto de exemplo com Botoes a baixo",
-    icon  = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png",
+    title    = "Texto Simples",                                                                            #OPCIONAL
+    text     = "Texto de exemplo com Botoes a baixo",
+    icon_url = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f916.png",
     bottom_buttons= [
         UiButton(text="Google",url="https://www.google.com"),
         UiButton(text="Youtube",url="https://www.youtube.com"),
@@ -78,11 +79,11 @@ textSection5 = SectionText(
 #CRIA O OBJETO DAS ETAPAS COM A COLUNA DE CADA ETAPA E ATRIBUI UM ID PARA CADA
 sectionEtapa = SectionEtapa(
             [
-                Etapa(titulo="Azul",icone="✈️",id_etapa="azul"),
-                Etapa(titulo="Soma",icone="➕",id_etapa="soma"),
-                Etapa(titulo="Susep",icone="🛡️",id_etapa="susep"),
-                Etapa(titulo="Upload",icone="⬆️",id_etapa="upload"),
-                Etapa(titulo="Elaw",icone="⚖️",id_etapa="elaw")
+                Etapa(titulo="step1",icone="✈️",id_etapa="1"),
+                Etapa(titulo="step2",icone="➕",id_etapa="2"),
+                Etapa(titulo="step3",icone="🛡️",id_etapa="3"),
+                Etapa(titulo="step4",icone="⬆️",id_etapa="4"),
+                Etapa(titulo="step5",icone="⚖️",id_etapa="5")
             ]
         )
 
@@ -90,21 +91,52 @@ sectionEtapa = SectionEtapa(
 sectionEtapa.add_job(
                 descricao = "NOME DO PROCESSO",
                 etapas = [
-                    ItemEtapa(id_etapa='azul',   status=ItemEtapa.STS_SUCC ), 
-                    ItemEtapa(id_etapa='soma',   status=ItemEtapa.STS_WARN),
-                    ItemEtapa(id_etapa='susep',  status=ItemEtapa.STS_DANG),
-                    ItemEtapa(id_etapa='upload', status=ItemEtapa.STS_BLUE),
-                    ItemEtapa(id_etapa='elaw',   status=ItemEtapa.STS_BLCK) 
+                    ItemEtapa(id_etapa='1',   status=ItemEtapa.STS_SUCC ), 
+                    ItemEtapa(id_etapa='2',   status=ItemEtapa.STS_WARN),
+                    ItemEtapa(id_etapa='3',  status=ItemEtapa.STS_DANG),
+                    ItemEtapa(id_etapa='4', status=ItemEtapa.STS_BLUE),
+                    ItemEtapa(id_etapa='5',   status=ItemEtapa.STS_BLCK) 
                     ]
                 )
 
-message = g.titled_card(
+
+
+custom_sec = UiSection(
+    widgets=[
+        UiColumns(columns=[
+            UiColumn(widgets=[
+                UiDecoratedText(
+                    top_label= "<b>HOSTNAME</b>",
+                    text="SRV-PROD-01"
+                ),
+                UiDecoratedText(
+                    top_label= "<b>USUÁRIO</b>",
+                    text="admin_bot"
+                )
+            ]),
+            UiColumn(widgets=[
+                UiDecoratedText(
+                    top_label= "<b>ROBÔ</b>",
+                    text="Worker_Alpha"
+                ),
+                UiDecoratedText(
+                    top_label= "<b>STATUS</b>",
+                    text="<b><font color=\"#2ecc71\">● DEPLOY</font></b>"
+                )
+            ])
+        ])
+    ]
+)
+
+card = UiCard(
             title           = "NOME DO ROBO", 
-            icon            = "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u1f699.png", #ICONE TDO TITULO
-            sections        = [sectionResumo,sectionEtapa,successSection,errorSection,warnSection,textSection,textSection2,textSection3,textSection4,textSection5] #SECOES EXTRAS
+            subtitle        = "hehehehe",
+            image_url       = "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Sport utility vehicle/3D/sport_utility_vehicle_3d.png", #ICONE TDO TITULO
+            sections        = [sectionResumo,sectionEtapa,successSection,errorSection,warnSection,textSection,textSection2,textSection3,textSection4,textSection5,custom_sec] #SECOES EXTRAS
+            # sections        = [custom_sec] #SECOES EXTRAS
         )
 
-message.send()
+g.send_card(card=card)
 
 
-
+pass

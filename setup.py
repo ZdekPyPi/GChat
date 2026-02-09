@@ -9,19 +9,19 @@ classifiers = [
 ]
  
 setup(
-  name='gchatUts',
-  version='1.0.3',
+  name='gchat',
+  version='1.0.4',
   description='Lib para comunicação via Google Chat Web Hook',
-  long_description=open('README.md',encoding='utf-8').read(),
-  long_description_content_type='text/markdown',
+  # long_description=open('README.md').read() + '\n\n' + open('CHANGELOG.txt').read(),
+  # long_description_content_type='text/markdown',
   url='',  
-  author='Zdek',
+  author='Porto Seguro - Coord TI Juridico Ressarcimento e Sindicancia',
   author_email='',
   license='MIT', 
   classifiers=classifiers,
-  keywords='gChat', 
+  keywords='gChat',
+  package_data = {'':['*.json']},
   packages=find_packages(),
-  package_data = {'': ['*.json']},
   install_requires=[
      'requests>=2.7.0'
   ]

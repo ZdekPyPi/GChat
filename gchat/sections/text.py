@@ -1,32 +1,32 @@
 import json,os
-from gchatUts.uikit import Uikit, UiButton
+from gchat.uikit import *
 
 
 
 class SectionText:
 
-    def __init__(self,title=None,text=None,icon=None,right_button:UiButton=None,bottom_buttons:list[UiButton]=None):
+    def __init__(self,title=None,text=None,icon_url=None,right_button:UiButton=None,bottom_buttons:list[UiButton]=None):
         self.title          = title
         self.text           = text
-        self.icon           = icon
+        self.icon_url       = icon_url
         self.right_button   = right_button
         self.bottom_buttons = bottom_buttons
     
 
-    def section(self):
+    def render(self):
         widgets = []
         text = self.text.replace("\n",'<br>') if self.text else None
-        widgets.append(Uikit.decoratedText(
+        widgets.append(UiDecoratedText(
             text         = self.title,
             bottom_label = text,
-            icon_url     = self.icon,
+            icon_url     = self.icon_url,
             right_button = self.right_button
             )
         )
         if self.bottom_buttons:
-            widgets.append(Uikit.buttonList(buttons = self.bottom_buttons))
+            widgets.append(UiButtonList(buttons = self.bottom_buttons))
 
-        base = Uikit.section(widgets=widgets)
+        base = UiSection(widgets=widgets).render()
 
         return base
 
