@@ -68,7 +68,7 @@ card = UiCard(
             sections  = [successSection,errorSection,warnSection] #ADCIONA AS SECOES ABAIXO DO TITULO
         )
 
-card.send()
+g.send_card(card)
 ```
 
 ![Logo do Robô](readme_images/card_simples.png)
