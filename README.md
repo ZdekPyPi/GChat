@@ -239,3 +239,5 @@ g.send_card(custom_card)
 
 
 ```
+
+![Logo do Robô](readme_images/custom_sample.png)
