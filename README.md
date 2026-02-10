@@ -2,6 +2,9 @@
 
 Biblioteca python para envio de mensagens formatadas via webHook do google chat
 
+## Contribua em
+https://github.com/ZdekPyPi/GChat
+
 ## Uso
 
 ### Importando a Biblioteca
